@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Barışalım mı?</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      margin-top: 100px;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #d81b60;
+      margin-bottom: 50px;
+    }
+
+    .btn {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yes {
+      background-color: #43a047;
+      color: white;
+    }
+
+    #no {
+      background-color: #e53935;
+      color: white;
+      position: absolute;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Barışalım mı? 🥺</h1>
+  <button class="btn" id="yes">Evet 💚</button>
+  <button class="btn" id="no">Hayır ❌</button>
+
+  <!-- Kalpler -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+    }
+
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+
+    // Hayır butonunu kaçır
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // Evet'e tıklanınca mesaj göster
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `
+        <h1>Seni çooook seviyorum! ❤️</h1>
+        <p style="font-size: 1.5rem;">İyi ki varsın, barıştık mı şimdi? 😍</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
